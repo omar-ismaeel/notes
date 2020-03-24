@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<h1>Posts</h1>
+
+<table class="table container">
+
+    <tbody>
+        <% @posts.each do |post| %>
+        <div class="">
+        <tr>
+            <td><%= current_user.username %></td>
+        </tr>
+        <tr class="">
+            <td><%= post.body %></td>
+        </tr>
+        <tr>
+            <td><%= link_to 'Show', post %>
+            <%= link_to 'Edit', edit_post_path(post) %>
+            <%= link_to 'Share', share_post_path(post) %>
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+        </div>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
