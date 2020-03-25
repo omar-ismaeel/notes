@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_post,  :except => [:index]
+  before_action :set_post,  :except => [:index, :new]
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.where("posts.owner = ?", session[:user_id].to_s)
+    @posts = current_user.posts 
   end
 
   # GET /posts/1
@@ -73,11 +73,11 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = current_user.posts.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:body, :owner, :id)
+      params.require(:post).permit(:body)
     end
 end
