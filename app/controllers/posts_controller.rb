@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_post,  :except => [:index, :new]
+  before_action :set_post,  :except => [:index, :new, :create]
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.where("posts.owner = ?", session[:user_id].to_s)
+    @posts = Post.all.where("posts.user_id = ?", session[:user_id].to_s)
   end
 
   # GET /posts/1
@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @user = current_user
   end
 
   # GET /posts/1/edit
@@ -26,7 +27,7 @@ class PostsController < ApplicationController
   def create
     
     @post = Post.new(post_params)
-    @post.owner = session[:user_id]
+    @post.user_id = current_user
 
     respond_to do |format|
       if @post.save
