@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   end
    get 'login', to: 'sessions#new'
    post 'login', to: 'sessions#create'
-   get 'share', to: 'posts#share'
-   post 'share', to: 'posts#share_it'
    get 'welcome', to: 'sessions#welcome'
    get 'authorized', to: 'sessions#page_requires_login'
    root 'posts#index'

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post,  :except => [:index, :new, :create]
+  before_action :set_post,  :except => [:index, :new, :create, :share_it]
   # GET /posts
   # GET /posts.json
   def index
@@ -44,6 +44,7 @@ class PostsController < ApplicationController
   end
 
   def share_it
+    @post = Post.find(params[:id])
     @post.shared.push(params[:userid])
   end
 
