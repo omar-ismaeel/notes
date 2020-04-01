@@ -46,6 +46,7 @@ class PostsController < ApplicationController
   def share_it
     @post = Post.find(params[:id])
     @post.shared.push(params[:userid])
+    redirect_to posts_url
   end
 
   # PATCH/PUT /posts/1

@@ -22,12 +22,14 @@
                     <a class="nav-link" href="#">Features</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <%= link_to "Log out", logout_path, method: "delete" %>
                 </li>
             </ul>
-            <span class="navbar-text">
+            <% if current_user.present? %>
+                <span class="navbar-text">
                 <%= image_tag current_user.avatar.url(:thumb) %><%= link_to current_user.username, current_user %>
-            </span>
+                </span>
+            <% end %>
         </div>
     </nav>
 </head>
