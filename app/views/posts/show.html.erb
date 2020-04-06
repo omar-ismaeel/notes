@@ -9,8 +9,10 @@
   <strong>Owner:</strong>
   <%= @post.user_id %>
 </p>
+
 <% if @post.file.attached? %>
 <%=link_to "Download Attachment" ,rails_blob_url(@post.file)%>
 <% end %>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
