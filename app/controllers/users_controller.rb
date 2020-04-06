@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     @user = User.create(params.require(:user).permit(:username,        
       :password))
     session[:user_id] = @user.id
+    @user.avatar.attach(params[:avatar])
     redirect_to '/posts'
   end
 
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        @user.avatar.attach(params[:avatar])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else

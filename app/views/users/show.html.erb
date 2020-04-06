@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <p>
-    <%= image_tag @user.avatar.url(:medium) %>
+    <%= image_tag(current_user.avatar.url) if current_user.avatar.attached? %>
 </p>
 <p>
     <strong>Username:</strong>
