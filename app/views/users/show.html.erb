@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <p>
-    <%= image_tag(current_user.avatar.url) if current_user.avatar.attached? %>
+    <%= image_tag @user.avatar.variant(resize_to_limit: [300, 300]) %>
 </p>
 <p>
     <strong>Username:</strong>
