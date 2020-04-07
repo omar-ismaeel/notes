@@ -6,7 +6,7 @@
             <div class="card text-black mb-3" style="width: 18rem;margin:15px;">
                 <div class="card-body">
                     <h5 class="card-title"><%= User.find_by(id: post.user_id).username %></h5>
-                    <p class="card-text"><%= post.body %></p>
+                    <p class="card-text text-truncate"><%= post.body %></p>
                     <%= link_to 'Show', post, class: "btn btn-secondary" %>
                     <%= link_to 'Share', share_post_path(post), class: "btn btn-secondary" %>
                     
