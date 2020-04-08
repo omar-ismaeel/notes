@@ -1,9 +1,2 @@
 <h1>Sign Up</h1>
-<%= form_for @user do |f|%>
-<%= f.label :username%><br>
-<%= f.text_field :username%><br>
-<%= f.label :password%><br>
-<%= f.password_field :password%><br>
-<%= f.file_field :avatar %>
-<%= f.submit %>
-<%end%>
+<%= render 'form', user: @user %>
