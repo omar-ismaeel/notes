@@ -1,1 +1,21 @@
 
+
+ 
+
+<div class="row">
+  <div class="col-12">
+    <div class="card text-center">
+      <div class="card-header">
+        <%= User.find_by(id: @post.user_id).username %>
+      </div>
+      <div class="card-body">
+        <p class="card-text"><%= @post.body %></p>
+        <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-secondary" %>
+        <%= link_to 'Share', share_post_path(@post), class: "btn btn-secondary" %>
+        <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %>
+        <%= link_to 'Back', posts_path ,class: "btn btn-secondary"%>
+      </div>
+    </div>
+  </div>
+</div>
+
