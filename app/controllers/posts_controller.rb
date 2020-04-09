@@ -44,7 +44,9 @@ class PostsController < ApplicationController
 
   def share_it
     @post = Post.find(params[:id])
-    @post.shared.push(params[:userid])
+    @user = User.find_by(username: params[:username])
+    @post.shared.push(@user.id)
+    @post.save
     redirect_to posts_url
   end
 
