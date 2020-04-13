@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.create(params.require(:user).permit(:username,        
-      :password_digest))
+      :password))
     session[:user_id] = @user.id
     
     respond_to do |format|
