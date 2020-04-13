@@ -3,7 +3,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.where("posts.user_id = ?", session[:user_id].to_s)
+    # @posts = Post.all.where("posts.user_id = ?", session[:user_id].to_s)
+    @posts = Post.where("user_id = ? OR ? = ANY(posts.shared)", current_user.id.to_s, current_user.id.to_s)
+    #@posts = Post.all.where('session[:user_id] = ?', [Post.shared])
+    # @posts = first.or(second)
   end
 
   # GET /posts/1
